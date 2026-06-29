@@ -8,6 +8,67 @@ If you are using mermaid markup to generate your class diagrams, you may edit th
 ## (INITIAL DESIGN): Class Diagram
 
 Include a UML class diagram of your initial design for this assignment. If you are using the mermaid markdown, you may include the code for it here. For a reminder on the mermaid syntax, you may go [here](https://mermaid.js.org/syntax/classDiagram.html)
+```mermaid
+---
+title: Domain Name Information
+---
+classDiagram
+    direction LR
+    
+    class DNInfoApp {
+        - DNInfoApp()
+        + main(args String[]) void
+    }
+
+    class ArgsController {
+    - model: DomainNameModel
+    - format: Formats = Formats.PRETTY
+    - output: OutputStream = System.out
+    - hostname: String = "all"
+    + getHelp() String
+    
+    }
+
+    class DomainNameModel {
+    + DATABASE: String = "data/hostrecords.xml"
+    + getRecords() List<DNRecord>
+    + getRecord(hostname String) DNRecord
+    + writeRecords(records List<DNRecord>, format Formats, out OutStream) void
+    + getInstance() DomainNameModel
+    + getInstance(database String) DomainNameModel
+    + TO ADD: JACKSON
+    }
+
+    class NetUtils {
+    - API_URL_FORMAT: String = "https://ipapi.co/%s/%s/"
+    - NetUtils()
+    + getApiUrl(ip String) String
+    + getApiUrl(ip String, format Formats) String
+    + lookUpIp(hostname String) String
+    + getUrlContents(urlStr String) InputStream
+    + getIpDetails(ip String) InputStream
+    + getIpDetails(ip String, format Formats) InputStream
+    }
+    
+    class Formats {
+    - TO ADD: JSON, XML, CSV, PRETTY    
+    + containsValues(value String) Formats
+    }
+
+    class DataFormatter {
+    - DataFormatter()
+    - prettyPrint(records Collection<DNRecord>, out OutputStream) void
+    - prettySingle(record @Nonnull DNRecord, out @Nonnull PrintStream) void
+    - writeXmlData(records Collection<DNRecord>, out OutputStream) void
+    - writeJsonData(records Collection<DNRecord>, out OutputStream) void
+    - writeCSVData(records Collection<DNRecord>, out OutputStream) void
+    - write(records Collection<DNRecord>, format Formats, out OutputStream) void
+    }
+
+    class DomainXmlWrapper {
+
+    }
+```    
 
 
 
