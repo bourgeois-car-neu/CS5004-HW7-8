@@ -8,6 +8,10 @@ import student.model.formatters.Formats;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import student.model.formatters.DomainXmlWrapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 
 
 public class TestDataFormatter {
@@ -35,13 +39,14 @@ public class TestDataFormatter {
     }
 
     /**
-     *  Produces output structure for Jackson CSV.
-     *  Because I don't yet know what Jackson's CSV output looks like.
+     * Produces output structure for Jackson CSV.
+     * Because I don't yet know what Jackson's CSV output looks like.
+     * <p>
+     * Schema:
+     * hostname,ip,city,region,country,postal,latitude,longitude
+     * Record:
+     * google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      *
-     *  Schema:
-     *  hostname,ip,city,region,country,postal,latitude,longitude
-     *  Record:
-     *  google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      * @throws Exception
      */
     @Test
@@ -59,12 +64,13 @@ public class TestDataFormatter {
     /**
      * Produces output structure for Jackson CSV for multiple records.
      * Because I don't yet know what Jackson's CSV output looks like.
-     *
+     * <p>
      * Schema:
      * hostname,ip,city,region,country,postal,latitude,longitude
      * Record:
      * google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      * github.com,1.1.1.1,city2,region2,country2,11111,1.0,1.0
+     *
      * @throws Exception
      */
     @Test
@@ -99,8 +105,9 @@ public class TestDataFormatter {
     }
 
     /**
-     *  Produces output structure for JSON.
-     *  Because I don't yet know what JSON output looks like.
+     * Produces output structure for JSON.
+     * Because I don't yet know what JSON output looks like.
+     *
      * @throws Exception
      */
     @Test
@@ -130,5 +137,21 @@ public class TestDataFormatter {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Produces output structure for XML with correct tags.
+     * Because I don't yet know what XML output looks like.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void experimentXml() throws Exception {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        List<DNRecord> records = List.of(record);
+        XmlMapper mapper = new XmlMapper();
+        DomainXmlWrapper wrapper = new DomainXmlWrapper(records);
+        String result = mapper.writeValueAsString(wrapper);
+        System.out.println("RESULT START>>>" + result + "<<<RESULT END");
+    }
 
 }
