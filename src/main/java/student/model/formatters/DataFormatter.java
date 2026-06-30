@@ -8,6 +8,8 @@ import javax.annotation.Nonnull;
 import student.model.DomainNameModel.DNRecord;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 /**
  * A class to format the data in different ways.
@@ -70,7 +72,12 @@ public final class DataFormatter {
      * @param out the output stream to write to
      */
     private static void writeJsonData(Collection<DNRecord> records, OutputStream out) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(out, records);
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
     }
 
     /**
