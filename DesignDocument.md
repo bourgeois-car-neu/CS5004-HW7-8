@@ -57,6 +57,7 @@ classDiagram
     }
 
     class ApiResponse {
+    - mutable bean for deserializing api
     }
 
     class DomainNameModel {
@@ -70,13 +71,8 @@ classDiagram
     }
 
     class DomainNameModelImpl {
-        + DATABASE : String = "data/hostrecords.xml"
         + getRecords() List<DNRecord>
         + getRecord(hostname String) DNRecord
-        + writeRecords(records: List<DNRecord>, format: Formats, out: OutStream) void
-        + getInstance() DomainNameModel
-        + getInstance(database String) DomainNameModel
-        + TO ADD: JACKSON
     }
 
     class NetUtils {
