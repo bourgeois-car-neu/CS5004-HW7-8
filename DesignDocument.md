@@ -29,14 +29,31 @@ classDiagram
     }
 
     class ArgsController {
-    - model: DomainNameModel
-    - format: Formats = Formats.PRETTY
-    - output: OutputStream = System.out
-    - hostname: String = "all"
+    - model : DomainNameModel
+    - format : Formats = Formats.PRETTY
+    - output : OutputStream = System.out
+    - hostname : String = "all"
     + getHelp() String
     }
 
-    class DNRecord {
+    class DNRecord { 
+    - hostname : String
+    - ip : String
+    - city : String
+    - region : String
+    - country : String
+    - postal : String
+    - latitude : double
+    - longitude : double
+    + hostname() : String
+    + ip() String
+    + city() String
+    + region() String
+    + country() String
+    + postal() String
+    + latitude() double
+    + longitude() double
+    + DNRecord(x6 String, latitude: double, longitude: double)
     }
 
     class ApiResponse {
@@ -45,51 +62,51 @@ classDiagram
     class DomainNameModel {
     + DATABASE: String = "data/hostrecords.xml"
     + getRecords() List<DNRecord>
-    + getRecord(hostname String) DNRecord
-    + writeRecords(records List<DNRecord>, format Formats, out OutStream) void
+    + getRecord(hostname: String) DNRecord
+    + writeRecords(records: List<DNRecord>, format: Formats, out: OutStream) void
     + getInstance() DomainNameModel
-    + getInstance(database String) DomainNameModel
+    + getInstance(database: String) DomainNameModel
     + TO ADD: JACKSON
     }
 
     class DomainNameModelImpl {
-        + DATABASE: String = "data/hostrecords.xml"
+        + DATABASE : String = "data/hostrecords.xml"
         + getRecords() List<DNRecord>
         + getRecord(hostname String) DNRecord
-        + writeRecords(records List<DNRecord>, format Formats, out OutStream) void
+        + writeRecords(records: List<DNRecord>, format: Formats, out: OutStream) void
         + getInstance() DomainNameModel
         + getInstance(database String) DomainNameModel
         + TO ADD: JACKSON
     }
 
     class NetUtils {
-    - API_URL_FORMAT: String = "https://ipapi.co/%s/%s/"
+    - API_URL_FORMAT : String = "https://ipapi.co/%s/%s/"
     - NetUtils()
     + getApiUrl(ip String) String
-    + getApiUrl(ip String, format Formats) String
-    + lookUpIp(hostname String) String
-    + getUrlContents(urlStr String) InputStream
-    + getIpDetails(ip String) InputStream
-    + getIpDetails(ip String, format Formats) InputStream
+    + getApiUrl(ip: String, format: Formats) String
+    + lookUpIp(hostname: String) String
+    + getUrlContents(urlStr: String) InputStream
+    + getIpDetails(ip: String) InputStream
+    + getIpDetails(ip: String, format: Formats) InputStream
     }
     
     class Formats {
     - TO ADD: JSON, XML, CSV, PRETTY    
-    + containsValues(value String) Formats
+    + containsValues(value: String) Formats
     }
 
     class DataFormatter {
     - DataFormatter()
     - prettyPrint(records Collection<DNRecord>, out OutputStream) void
-    - prettySingle(record @Nonnull DNRecord, out @Nonnull PrintStream) void
-    - writeXmlData(records Collection<DNRecord>, out OutputStream) void
-    - writeJsonData(records Collection<DNRecord>, out OutputStream) void
-    - writeCSVData(records Collection<DNRecord>, out OutputStream) void
-    - write(records Collection<DNRecord>, format Formats, out OutputStream) void
+    - prettySingle(record: @Nonnull DNRecord, out: @Nonnull PrintStream) void
+    - writeXmlData(records: Collection<DNRecord>, out: OutputStream) void
+    - writeJsonData(records: Collection<DNRecord>, out: OutputStream) void
+    - writeCSVData(records: Collection<DNRecord>, out: OutputStream) void
+    - write(records: Collection<DNRecord>, format: Formats, out: OutputStream) void
     }
 
     class DomainXmlWrapper {
-    + DomainXmlWrapper(records Collection<DNRecord>)
+    + DomainXmlWrapper(records: Collection<DNRecord>)
     }
 ```    
 
