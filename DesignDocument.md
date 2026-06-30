@@ -18,6 +18,8 @@ classDiagram
         ArgsController --> Formats
         DomainNameModel --> DataFormatter
         DomainNameModel --> Formats
+        DomainNameModelImpl --> DomainNameModel
+        DataFormatter --> DNRecord
         DataFormatter --> Formats
         NetUtils --> Formats
     
@@ -32,7 +34,12 @@ classDiagram
     - output: OutputStream = System.out
     - hostname: String = "all"
     + getHelp() String
-    
+    }
+
+    class DNRecord {
+    }
+
+    class ApiResponse {
     }
 
     class DomainNameModel {
@@ -43,6 +50,16 @@ classDiagram
     + getInstance() DomainNameModel
     + getInstance(database String) DomainNameModel
     + TO ADD: JACKSON
+    }
+
+    class DomainNameModelImpl {
+        + DATABASE: String = "data/hostrecords.xml"
+        + getRecords() List<DNRecord>
+        + getRecord(hostname String) DNRecord
+        + writeRecords(records List<DNRecord>, format Formats, out OutStream) void
+        + getInstance() DomainNameModel
+        + getInstance(database String) DomainNameModel
+        + TO ADD: JACKSON
     }
 
     class NetUtils {
