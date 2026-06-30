@@ -108,8 +108,6 @@ classDiagram
 
 
 
-
-
 ## (INITIAL DESIGN): Tests to Write - Brainstorm
 
 Write a test (in english) that you can picture for the class diagram you have created. This is the brainstorming stage in the TDD process. 
@@ -123,7 +121,12 @@ Write a test (in english) that you can picture for the class diagram you have cr
 > 5. Repeat steps 2-4 until you have all the tests passing/fully built program
 
 You should feel free to number your brainstorm. 
-1. Test 1..
+1. Test `DataFormatter`
+    * prettyPrint() match expected output
+    * writeXmlData() output produce the correct wrapper tags
+    * writeJsonData() output deserialize back into an equivalent DNRecord
+    * writeCSVData() output contain the right headers and values
+    * write()
 2. Test 2..
 
 ## (FINAL DESIGN): Class Diagram
