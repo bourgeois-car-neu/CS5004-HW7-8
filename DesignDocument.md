@@ -122,10 +122,10 @@ Write a test (in english) that you can picture for the class diagram you have cr
 
 You should feel free to number your brainstorm. 
 1. Test `DataFormatter`
-    * prettyPrint() match expected output
+    * prettyPrint() returns expected output
     * writeXmlData() output produce the correct wrapper tags
-    * writeJsonData() output deserialize back into an equivalent DNRecord
-    * writeCSVData() output contain the right headers and values
+    * writeJsonData() returns correct format
+    * writeCSVData() returns correct format with headers and values
     * write()
 2. Test 2..
 
