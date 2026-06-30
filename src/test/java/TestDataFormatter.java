@@ -7,6 +7,8 @@ import student.model.formatters.DataFormatter;
 import student.model.formatters.Formats;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class TestDataFormatter {
 
@@ -36,8 +38,9 @@ public class TestDataFormatter {
      *  Produces output structure for Jackson CSV.
      *  Because I don't yet know what Jackson's CSV output looks like.
      *
-     *  Output:
+     *  Schema:
      *  hostname,ip,city,region,country,postal,latitude,longitude
+     *  Record:
      *  google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      * @throws Exception
      */
@@ -57,8 +60,9 @@ public class TestDataFormatter {
      * Produces output structure for Jackson CSV for multiple records.
      * Because I don't yet know what Jackson's CSV output looks like.
      *
-     * Output:
+     * Schema:
      * hostname,ip,city,region,country,postal,latitude,longitude
+     * Record:
      * google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      * github.com,1.1.1.1,city2,region2,country2,11111,1.0,1.0
      * @throws Exception
@@ -92,6 +96,21 @@ public class TestDataFormatter {
         String expected = "hostname,ip,city,region,country,postal,latitude,longitude\n"
                 + "google.com,0.0.0.0,city,region,country,00000,0.0,0.0\n";
         assertEquals(expected, actual);
+    }
+
+    /**
+     *  Produces output structure for JSON.
+     *  Because I don't yet know what JSON output looks like.
+     * @throws Exception
+     */
+    @Test
+    public void experimentJson() throws Exception {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        List<DNRecord> records = List.of(record);
+        ObjectMapper mapper = new ObjectMapper();
+        String result = mapper.writeValueAsString(records);
+        System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
 }
