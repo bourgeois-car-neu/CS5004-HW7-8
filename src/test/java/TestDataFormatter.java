@@ -35,6 +35,10 @@ public class TestDataFormatter {
     /**
      *  Produces output structure for Jackson CSV.
      *  Because I don't yet know what Jackson's CSV output looks like.
+     *
+     *  Output:
+     *  hostname,ip,city,region,country,postal,latitude,longitude
+     *  google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      * @throws Exception
      */
     @Test
@@ -54,6 +58,7 @@ public class TestDataFormatter {
      * Because I don't yet know what Jackson's CSV output looks like.
      *
      * Output:
+     * hostname,ip,city,region,country,postal,latitude,longitude
      * google.com,0.0.0.0,city,region,country,00000,0.0,0.0
      * github.com,1.1.1.1,city2,region2,country2,11111,1.0,1.0
      * @throws Exception
@@ -73,5 +78,20 @@ public class TestDataFormatter {
         System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
+    /**
+     * test writeCsv() returns correct headers & values in correct format.
+     */
+    @Test
+    public void testWriteCsv() {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        List<DNRecord> records = List.of(record);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataFormatter.write(records, Formats.CSV, baos);
+        String actual = baos.toString();
+        String expected = "hostname,ip,city,region,country,postal,latitude,longitude\n"
+                + "google.com,0.0.0.0,city,region,country,00000,0.0,0.0\n";
+        assertEquals(expected, actual);
+    }
 
 }
