@@ -49,5 +49,29 @@ public class TestDataFormatter {
         System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
+    /**
+     * Produces output structure for Jackson CSV for multiple records.
+     * Because I don't yet know what Jackson's CSV output looks like.
+     *
+     * Output:
+     * google.com,0.0.0.0,city,region,country,00000,0.0,0.0
+     * github.com,1.1.1.1,city2,region2,country2,11111,1.0,1.0
+     * @throws Exception
+     */
+    @Test
+    public void experimentCsvMulti() throws Exception {
+        DNRecord record1 = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        DNRecord record2 = new DNRecord("github.com", "1.1.1.1", "city2",
+                "region2", "country2", "11111", 1, 1);
+        List<DNRecord> records = List.of(record1, record2);
+
+        CsvMapper mapper = new CsvMapper();
+        CsvSchema schema = mapper.schemaFor(DNRecord.class).withHeader();
+
+        String result = mapper.writer(schema).writeValueAsString(records);
+        System.out.println("RESULT START>>>" + result + "<<<RESULT END");
+    }
+
 
 }
