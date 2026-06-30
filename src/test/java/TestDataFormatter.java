@@ -154,6 +154,12 @@ public class TestDataFormatter {
         System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
+    /**
+     * Produces output structure for XML with correct tags.
+     * Because I don't yet know what XML output looks like.
+     * Added: SerializationFeature.INDENT_OUTPUT
+     * @throws Exception
+     */
     @Test
     public void experimentXmlIndented() throws Exception {
         DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
@@ -167,6 +173,31 @@ public class TestDataFormatter {
         System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
-
+    /**
+     * test writeXml() returns the correct values, tags, structure.
+     * expected structure based on experimentXmlIndented().
+     */
+    @Test
+    public void testWriteXml() {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        List<DNRecord> records = List.of(record);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataFormatter.write(records, Formats.XML, baos);
+        String actual = baos.toString();
+        String expected = "<domainList>\n"
+                + "  <domain>\n"
+                + "    <hostname>google.com</hostname>\n"
+                + "    <ip>0.0.0.0</ip>\n"
+                + "    <city>city</city>\n"
+                + "    <region>region</region>\n"
+                + "    <country>country</country>\n"
+                + "    <postal>00000</postal>\n"
+                + "    <latitude>0.0</latitude>\n"
+                + "    <longitude>0.0</longitude>\n"
+                + "  </domain>\n"
+                + "</domainList>\n";
+        assertEquals(expected, actual);
+    }
 
 }
