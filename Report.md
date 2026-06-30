@@ -6,26 +6,39 @@ code as it is meant to help you understand some of the concepts.
 ## Technical Questions
 
 1. Describe the purpose of a model in the MVC architecture. What is the model responsible for? What are some examples of what might be included in a model?
-
+* MVC stands for Model View Controller, it's an application into three parts, each with their own responsibilities. The model holds the business and data logic. It represents what the data is and how it will behave. A model may include data structures, business logic, and external data sources.
 
 
 2. Describe the purpose of a controller in the MVC architecture. What is the controller responsible for? What are some examples of what might be included in a controller?
-
+* The "C" in MVC stands for Controller. The controller takes user input, decides what should happen, talks to the model to get/update data, then hands that data off to the view for display. The controller may include input handling, decision logic, and coordination like calling the model or view. 
 
 3. Describe the word serialization, and how it relates to 'data-binding' in Jackson. What is the purpose of serialization? What is the purpose of data-binding? What is the relationship between the two?
-
+* Serialization means converting an object into a format that can be stored or transmitted. Objects in memory disappear when a program ends, but serialized data can be saved, sent, or shared programs. Data binding in Jackson automatically maps Java object fields to or from a data format like JSON or XML. The purpose of data binding is to eliminate tedious work of manually reading and converting the Java object info. Jackson looks at class structure and automatically translates between object and data. Serialization is essentially the goal, data binding is the technique used to achieve the goal. 
 
 4. Describe the differences between JSON and CSV - make sure to reference flat or hierarchical data in your answer. What are some advantages of JSON over CSV? What are some disadvantages?
-
+* JSON is a hierarchical data format, it can use nested data structures. The data can also be represented as a string and integer.
+* CSV stands for comma separated values, it's a flat data structure with rows and columns, like a spreadsheet. CSV data is always represented as a string when it comes into Java.
+* Advantages of JSON over CSV include: 
+  * supports complex and nested data
+  * each field is next to the data, making it easy to understand what each value means
+  * widely used in APIs 
+* Disadvantages of JSON over CSV include:
+  * repeated field names make the file size larger than CSV
+  * not easily accessible, a CSV can be opened in Excel
+  * slower to parse for large datasets, CSV are simple to read line by line with large tables
 
 5. Why would we want to use InputStreams and OutputStreams throughout a program instead of specific types of streams (for most cases)?
+* Input/Output Streams let your code work with any data source without caring what that source/destination actually is. 
 
 
 6. What is the difference between a record and a class in Java? When might you use one over the other?
+* Record is a special way to define an immutable data carrier. This means that once you build an object, none of its values can be modified. 
+* Class gives you full control over everything, but you have to start from scratch. You write its purpose, mutability, inheritance.
+* Use a record hen you have data that shouldn't change after creation. Use a class when things can change over time. 
 
 
 7. What is a java "bean"? 
-
+* A Java Bean is a plain Java class that follows a specific set of conventions. It's designed to make it easy for other tools (like Jackson) to inspect and manipulate it automatically.
 
 ## Deeper Thinking
 
