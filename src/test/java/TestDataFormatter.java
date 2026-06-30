@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import student.model.DomainNameModel.DNRecord;
 import student.model.formatters.DataFormatter;
 import student.model.formatters.Formats;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 public class TestDataFormatter {
 
@@ -29,5 +31,23 @@ public class TestDataFormatter {
                 + "\n";
         assertEquals(expected, actual);
     }
+
+    /**
+     *  Produces output structure for Jackson CSV.
+     *  Because I don't yet know what Jackson's CSV output looks like.
+     * @throws Exception
+     */
+    @Test
+    public void experimentCsv() throws Exception {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+
+        CsvMapper mapper = new CsvMapper();
+        CsvSchema schema = mapper.schemaFor(DNRecord.class).withHeader();
+
+        String result = mapper.writer(schema).writeValueAsString(record);
+        System.out.println("RESULT START>>>" + result + "<<<RESULT END");
+    }
+
 
 }
