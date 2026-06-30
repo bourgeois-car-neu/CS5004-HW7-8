@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.util.Collection;
 import javax.annotation.Nonnull;
 import student.model.DomainNameModel.DNRecord;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 /**
  * A class to format the data in different ways.
@@ -73,12 +75,19 @@ public final class DataFormatter {
 
     /**
      * Write the data as CSV.
-     * 
+     * Jackson order: writeValue(OutputStream out, Object value)
+     *
      * @param records the records to write
      * @param out the output stream to write to
      */
     private static void writeCSVData(Collection<DNRecord> records, OutputStream out) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        CsvMapper mapper = new CsvMapper();
+        CsvSchema schema = mapper.schemaFor(DNRecord.class).withHeader();
+        try {
+            mapper.writer(schema).writeValue(out, records);
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
     }
 
     /**
