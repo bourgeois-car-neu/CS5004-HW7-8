@@ -154,4 +154,19 @@ public class TestDataFormatter {
         System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
+    @Test
+    public void experimentXmlIndented() throws Exception {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        List<DNRecord> records = List.of(record);
+
+        XmlMapper mapper = new XmlMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        DomainXmlWrapper wrapper = new DomainXmlWrapper(records);
+        String result = mapper.writeValueAsString(wrapper);
+        System.out.println("RESULT START>>>" + result + "<<<RESULT END");
+    }
+
+
+
 }
