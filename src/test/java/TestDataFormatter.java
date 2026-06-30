@@ -113,4 +113,22 @@ public class TestDataFormatter {
         System.out.println("RESULT START>>>" + result + "<<<RESULT END");
     }
 
+    /**
+     * test writeJson() returns correct format.
+     */
+    @Test
+    public void testWriteJson() {
+        DNRecord record = new DNRecord("google.com", "0.0.0.0", "city",
+                "region", "country", "00000", 0, 0);
+        List<DNRecord> records = List.of(record);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataFormatter.write(records, Formats.JSON, baos);
+        String actual = baos.toString();
+        String expected = "[{\"hostname\":\"google.com\",\"ip\":\"0.0.0.0\","
+                + "\"city\":\"city\",\"region\":\"region\",\"country\":\"country\","
+                + "\"postal\":\"00000\",\"latitude\":0.0,\"longitude\":0.0}]";
+        assertEquals(expected, actual);
+    }
+
+
 }
