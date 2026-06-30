@@ -9,6 +9,8 @@ import student.model.DomainNameModel.DNRecord;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 
 /**
@@ -61,7 +63,14 @@ public final class DataFormatter {
      * @param out the output stream to write to
      */
     private static void writeXmlData(Collection<DNRecord> records, OutputStream out) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        XmlMapper mapper = new XmlMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        DomainXmlWrapper wrapper = new DomainXmlWrapper(records);
+        try {
+            mapper.writeValue(out, wrapper);
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
     }
 
 
