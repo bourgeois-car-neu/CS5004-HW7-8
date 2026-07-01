@@ -17,15 +17,34 @@ public class ArgsController {
     /** The hostname to look up. */
     private String hostname = "all"; // default to all
 
+    /**
+     * empty constructor.
+     * @param args
+     */
+    public ArgsController(String[] args) {
 
+    }
+
+    /**
+     * getter for format.
+     * @return format = Formats.PRETTY
+     */
     public Formats getFormat() {
         return format;
     }
 
+    /**
+     * getter for output.
+     * @return output = System.out
+     */
     public OutputStream getOutput() {
         return output;
     }
 
+    /**
+     * getter for hostname.
+     * @return hostname = "all"
+     */
     public String getHostname() {
         return hostname;
     }
