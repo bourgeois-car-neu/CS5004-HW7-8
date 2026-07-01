@@ -15,4 +15,13 @@ public class TestArgsController {
         assertEquals(System.out, controller.getOutput());
         assertEquals("all", controller.getHostname());
     }
+
+    /**
+     * test getFormat() returns correct JSON structure.
+     */
+    @Test
+    public void testFormatJson() {
+        ArgsController controller = new ArgsController(new String[]{"-f", "json"});
+        assertEquals(Formats.JSON, controller.getFormat());
+    }
 }
