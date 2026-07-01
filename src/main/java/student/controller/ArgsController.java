@@ -18,11 +18,21 @@ public class ArgsController {
     private String hostname = "all"; // default to all
 
     /**
-     * empty constructor.
+     * constructor.
+     * .containsValues to handle any valid string rather than hard coding "JSON".
      * @param args
      */
     public ArgsController(String[] args) {
-
+        // loop through every element in args.
+        for (int  i = 0; i < args.length; i++) {
+            // find "-f"
+            if (args[i].equals("-f")) {
+                // args[i + 1] look at next element (format value)
+                // pass value to Formats.containsValues
+                // store answer in format field
+                format = Formats.containsValues(args[i + 1]);
+            }
+        }
     }
 
     /**
