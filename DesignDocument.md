@@ -137,6 +137,7 @@ You should feel free to number your brainstorm.
      * XML
      * CSV
      * PRETTY
+   * `getHostname()` returns correct host name
 
 ## (FINAL DESIGN): Class Diagram
 
