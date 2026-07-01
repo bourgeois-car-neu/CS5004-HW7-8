@@ -24,4 +24,13 @@ public class TestArgsController {
         ArgsController controller = new ArgsController(new String[]{"-f", "json"});
         assertEquals(Formats.JSON, controller.getFormat());
     }
+
+    /**
+     * test getFormat() returns correct XML structure.
+     */
+    @Test
+    public void testFormatXml() {
+        ArgsController controller = new ArgsController(new String[]{"-f", "xml"});
+        assertEquals(Formats.XML, controller.getFormat());
+    }
 }
