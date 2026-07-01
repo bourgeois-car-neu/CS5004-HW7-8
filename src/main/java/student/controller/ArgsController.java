@@ -18,7 +18,17 @@ public class ArgsController {
     private String hostname = "all"; // default to all
 
 
+    public Formats getFormat() {
+        return format;
+    }
 
+    public OutputStream getOutput() {
+        return output;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
     /**
      * Get the help message. Left this here, so you didn't have to write it - however you are free
      * to change it and the file name if you want/need to.
