@@ -128,9 +128,10 @@ You should feel free to number your brainstorm.
     * `writeCSVData()` returns correct format with headers and values
     * write()
 2. Test `ArgsController`
-   * `getFormat()` returns Format.PRETTY
-   * `getOutput()` returns System.out
-   * `getHostname()` returns "all"
+   * test default values are returned correctly
+     * `getFormat()` returns Format.PRETTY
+     * `getOutput()` returns System.out
+     * `getHostname()` returns "all"
 
 ## (FINAL DESIGN): Class Diagram
 
