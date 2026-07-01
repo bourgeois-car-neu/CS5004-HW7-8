@@ -33,4 +33,13 @@ public class TestArgsController {
         ArgsController controller = new ArgsController(new String[]{"-f", "xml"});
         assertEquals(Formats.XML, controller.getFormat());
     }
+
+    /**
+     * test getFormat() returns correct CSV structure.
+     */
+    @Test
+    public void testFormatCsv() {
+        ArgsController controller = new ArgsController(new String[]{"-f", "csv"});
+        assertEquals(Formats.CSV, controller.getFormat());
+    }
 }
