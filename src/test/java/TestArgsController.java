@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import student.controller.ArgsController;
 import student.model.formatters.Formats;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import java.io.FileOutputStream;
 
 public class TestArgsController {
     /**
@@ -63,5 +65,16 @@ public class TestArgsController {
     public void testHostname() {
         ArgsController controller = new ArgsController(new String[]{"google.com"});
         assertEquals("google.com", controller.getHostname());
+    }
+
+    /**
+     * test getOutput() returns correct type of object.
+     * same file in two different FileOutputStream not considered equal.
+     * use InstanceOf to compare object type.
+     */
+    @Test
+    public void testOutputType() {
+        ArgsController controller = new ArgsController(new String[]{"-o", "test_output.txt"});
+        assertInstanceOf(FileOutputStream.class, controller.getOutput());
     }
 }
