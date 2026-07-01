@@ -122,12 +122,15 @@ Write a test (in english) that you can picture for the class diagram you have cr
 
 You should feel free to number your brainstorm. 
 1. Test `DataFormatter`
-    * prettyPrint() returns expected output
-    * writeXmlData() output produce the correct wrapper tags
-    * writeJsonData() returns correct format
-    * writeCSVData() returns correct format with headers and values
+    * `prettyPrint()` returns expected output
+    * `writeXmlData()` returns the correct values, tags, structure
+    * `writeJsonData()` returns correct format
+    * `writeCSVData()` returns correct format with headers and values
     * write()
-2. Test 2..
+2. Test `ArgsController`
+   * `getFormat()` returns Format.PRETTY
+   * `getOutput()` returns System.out
+   * `getHostname()` returns "all"
 
 ## (FINAL DESIGN): Class Diagram
 
