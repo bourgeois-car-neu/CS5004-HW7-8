@@ -4,6 +4,7 @@ import student.controller.ArgsController;
 import student.model.formatters.Formats;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import java.io.FileOutputStream;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestArgsController {
     /**
@@ -86,5 +87,14 @@ public class TestArgsController {
     public void testDatabase() {
         ArgsController controller = new ArgsController(new String[]{"--data", "hello_test"});
         assertEquals("hello_test", controller.getDatabase());
+    }
+
+    /**
+     * test getHelp() returns true getHelp has "DNInfoApp".
+     */
+    @Test
+    public void testHelp() {
+        ArgsController controller = new ArgsController(new String[]{});
+        assertTrue(controller.getHelp().contains("DNInfoApp"));
     }
 }
