@@ -18,6 +18,7 @@ public class TestArgsController {
 
     /**
      * test getFormat() returns correct JSON structure.
+     * -f json → format is Formats.JSON.
      */
     @Test
     public void testFormatJson() {
@@ -27,6 +28,7 @@ public class TestArgsController {
 
     /**
      * test getFormat() returns correct XML structure.
+     * -f xml → format is Formats.XML.
      */
     @Test
     public void testFormatXml() {
@@ -36,6 +38,7 @@ public class TestArgsController {
 
     /**
      * test getFormat() returns correct CSV structure.
+     * -f csv → format is Formats.CSV.
      */
     @Test
     public void testFormatCsv() {
@@ -45,10 +48,20 @@ public class TestArgsController {
 
     /**
      * test getFormat() returns correct PRETTY structure.
+     * -f pretty → format is Formats.PRETTY.
      */
     @Test
     public void testFormatPretty() {
         ArgsController controller = new ArgsController(new String[]{"-f", "pretty"});
         assertEquals(Formats.PRETTY, controller.getFormat());
+    }
+
+    /**
+     * test getHostname() returns correct host name.
+     */
+    @Test
+    public void testHostname() {
+        ArgsController controller = new ArgsController(new String[]{"google.com"});
+        assertEquals("google.com", controller.getHostname());
     }
 }
