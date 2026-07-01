@@ -80,6 +80,7 @@ public class TestArgsController {
 
     /**
      * test getDatabase() returns correct string.
+     * --data tag
      */
     @Test
     public void testDatabase() {
