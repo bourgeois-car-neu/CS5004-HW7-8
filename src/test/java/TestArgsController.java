@@ -42,4 +42,13 @@ public class TestArgsController {
         ArgsController controller = new ArgsController(new String[]{"-f", "csv"});
         assertEquals(Formats.CSV, controller.getFormat());
     }
+
+    /**
+     * test getFormat() returns correct PRETTY structure.
+     */
+    @Test
+    public void testFormatPretty() {
+        ArgsController controller = new ArgsController(new String[]{"-f", "pretty"});
+        assertEquals(Formats.PRETTY, controller.getFormat());
+    }
 }
