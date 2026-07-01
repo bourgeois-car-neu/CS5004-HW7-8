@@ -132,6 +132,11 @@ You should feel free to number your brainstorm.
      * `getFormat()` returns Format.PRETTY
      * `getOutput()` returns System.out
      * `getHostname()` returns "all"
+   * `getFormat()` returns correct format
+     * JSON
+     * XML
+     * CSV
+     * PRETTY
 
 ## (FINAL DESIGN): Class Diagram
 
