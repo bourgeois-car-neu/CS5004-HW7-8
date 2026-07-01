@@ -17,6 +17,8 @@ public class ArgsController {
     private OutputStream output = System.out;
     /** The hostname to look up. */
     private String hostname = "all"; // default to all
+    /** The database file to read from. */
+    private String database = DomainNameModel.DATABASE;
 
     /**
      * constructor.
@@ -42,6 +44,9 @@ public class ArgsController {
                     error.printStackTrace();
                 }
                 i++;    // skip element after "-o"
+            } else if (args[i].equals("--data")) {
+                database = args[i + 1];
+                i++;
             }
         }
     }
@@ -69,6 +74,15 @@ public class ArgsController {
     public String getHostname() {
         return hostname;
     }
+
+    /**
+     * getter for database file.
+     * @return database string
+     */
+    public String getDatabase() {
+        return database;
+    }
+
     /**
      * Get the help message. Left this here, so you didn't have to write it - however you are free
      * to change it and the file name if you want/need to.
