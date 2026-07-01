@@ -31,6 +31,9 @@ public class ArgsController {
                 // pass value to Formats.containsValues
                 // store answer in format field
                 format = Formats.containsValues(args[i + 1]);
+                i++;    // skip element after "-f"
+            } else if (!args[i].startsWith("-")) {
+                hostname = args[i];
             }
         }
     }
