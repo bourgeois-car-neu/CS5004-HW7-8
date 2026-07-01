@@ -138,6 +138,8 @@ You should feel free to number your brainstorm.
      * CSV
      * PRETTY
    * `getHostname()` returns correct host name
+   * `getOutput()` returns the correct object type
+   * `getDatabase()` returns correct string
 
 ## (FINAL DESIGN): Class Diagram
 
