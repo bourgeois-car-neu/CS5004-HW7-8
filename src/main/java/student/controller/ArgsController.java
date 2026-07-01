@@ -3,6 +3,7 @@ package student.controller;
 import java.io.OutputStream;
 import student.model.DomainNameModel;
 import student.model.formatters.Formats;
+import java.io.FileOutputStream;
 
 /**
  * A controller to handle the arguments.
@@ -34,6 +35,13 @@ public class ArgsController {
                 i++;    // skip element after "-f"
             } else if (!args[i].startsWith("-")) {
                 hostname = args[i];
+            } else if (args[i].equals("-o")) {
+                try {
+                    output = new FileOutputStream(args[i + 1]);
+                } catch (Exception error) {
+                    error.printStackTrace();
+                }
+                i++;    // skip element after "-o"
             }
         }
     }
