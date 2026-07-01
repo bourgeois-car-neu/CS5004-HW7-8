@@ -77,4 +77,13 @@ public class TestArgsController {
         ArgsController controller = new ArgsController(new String[]{"-o", "test_output.txt"});
         assertInstanceOf(FileOutputStream.class, controller.getOutput());
     }
+
+    /**
+     * test getDatabase() returns correct string.
+     */
+    @Test
+    public void testDatabase() {
+        ArgsController controller = new ArgsController(new String[]{"--data", "hello_test"});
+        assertEquals("hello_test", controller.getDatabase());
+    }
 }
