@@ -19,6 +19,8 @@ public class ArgsController {
     private String hostname = "all"; // default to all
     /** The database file to read from. */
     private String database = DomainNameModel.DATABASE;
+    /** If help flag requested. */
+    private boolean helpRequest = false;
 
     /**
      * constructor.
@@ -47,6 +49,8 @@ public class ArgsController {
             } else if (args[i].equals("--data")) {
                 database = args[i + 1];
                 i++;
+            } else if (args[i].equals("-h") || args[i].equals("--help")) {
+                helpRequest = true;
             }
         }
     }
@@ -81,6 +85,14 @@ public class ArgsController {
      */
     public String getDatabase() {
         return database;
+    }
+
+    /**
+     * getter for help request.
+     * @return help request true or false.
+     */
+    public boolean isHelpRequest() {
+        return helpRequest;
     }
 
     /**
