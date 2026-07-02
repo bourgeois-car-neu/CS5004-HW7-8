@@ -97,4 +97,10 @@ public class TestArgsController {
         ArgsController controller = new ArgsController(new String[]{});
         assertTrue(controller.getHelp().contains("DNInfoApp"));
     }
+
+    @Test
+    public void testHelpRequest() {
+        ArgsController controller = new ArgsController(new String[]{"-h"});
+        assertTrue(controller.isHelpRequest());
+    }
 }
