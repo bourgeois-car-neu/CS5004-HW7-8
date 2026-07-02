@@ -140,6 +140,8 @@ You should feel free to number your brainstorm.
    * `getHostname()` returns correct host name
    * `getOutput()` returns the correct object type
    * `getDatabase()` returns correct string
+   * `getHelp()` returns true for string
+   * `isHelpRequest()` returns true or false 
 
 ## (FINAL DESIGN): Class Diagram
 
