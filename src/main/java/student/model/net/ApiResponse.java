@@ -153,7 +153,7 @@ public class ApiResponse {
     }
 
     @Override
-    public int hashcode() {
+    public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 }
