@@ -38,4 +38,18 @@ public class TestDomainNameModelImpl {
         DomainNameModel model = DomainNameModel.getInstance("data/hostrecords.xml");
         assertNotNull(model);
     }
+
+    /**
+     * tests getRecords() list cant be modified.
+     */
+    @Test
+    public void testRecordsUnmodified() {
+        DomainNameModel model = DomainNameModel.getInstance("data/hostrecords.xml");
+        List<DNRecord> records = model.getRecords();
+        assertThrows(UnsupportedOperationException.class, () -> {
+            records.add(new DNRecord("test.com", "0.0.0.0", "city",
+                    "region", "country", "00000", 0, 0));
+        });
+    }
+
 }
