@@ -1,4 +1,6 @@
-Name:
+Name: Caroline Bourgeois
+
+GitHub link: https://github.com/bourgeois-car-neu/CS5004-HW7-8
 
 How many hours did it take you to complete this assignment (estimate)?
 
