@@ -81,8 +81,7 @@ public interface DomainNameModel {
      * @return the instance of the model
      */
     static DomainNameModel getInstance(String database) {
-        throw new UnsupportedOperationException("Not implemented yet");
-        // you will want to implement this specific to your type of model - if you use it!
+       return new DomainNameModelImpl(database);
     }
 
 
