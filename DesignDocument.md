@@ -145,6 +145,7 @@ You should feel free to number your brainstorm.
 3. Test `DomainNameModelImpl`
    * `getRecords()` returns correct hostname & ip
    * `getRecords()` returns correct for all three
+   * `getInstance()` in DomainNameModel returns DomainNameModelImpl object
 
 ## (FINAL DESIGN): Class Diagram
 
