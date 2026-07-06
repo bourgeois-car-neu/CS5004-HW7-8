@@ -4,6 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DomainNameModelImpl implements DomainNameModel {
@@ -34,9 +35,13 @@ public class DomainNameModelImpl implements DomainNameModel {
         }
     }
 
+    /**
+     * make sure records are immutable / unmodifiable.
+     * @return records list.
+     */
     @Override
     public List<DNRecord> getRecords() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return Collections.unmodifiableList(records);
     }
 
     @Override
