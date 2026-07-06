@@ -28,5 +28,14 @@ public class TestDomainNameModelImpl {
         assertEquals(3, records.size());
     }
 
-
+    /**
+     * tests getInstance() from DomainNameModel.
+     * should return a DomainNameModelImpl object.
+     * return should be not null.
+     */
+    @Test
+    public void testGetInstance() {
+        DomainNameModel model = DomainNameModel.getInstance("data/hostrecords.xml");
+        assertNotNull(model);
+    }
 }
