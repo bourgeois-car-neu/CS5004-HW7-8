@@ -90,6 +90,7 @@ public class TestDataFormatter {
 
     /**
      * test writeCsv() returns correct headers & values in correct format.
+     * expected structure based on experimentCsv().
      */
     @Test
     public void testWriteCsv() {
@@ -108,6 +109,10 @@ public class TestDataFormatter {
      * Produces output structure for JSON.
      * Because I don't yet know what JSON output looks like.
      *
+     * Records:
+     * [{"hostname":"google.com","ip":"0.0.0.0",
+     * + "city":"city","region":"region","country":"country",
+     * +"postal":"00000","latitude":0.0,"longitude":0.0}].
      * @throws Exception
      */
     @Test
@@ -122,6 +127,7 @@ public class TestDataFormatter {
 
     /**
      * test writeJson() returns correct format.
+     * expected structure based on experimentJson().
      */
     @Test
     public void testWriteJson() {
