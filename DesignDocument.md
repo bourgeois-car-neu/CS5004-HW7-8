@@ -142,6 +142,9 @@ You should feel free to number your brainstorm.
    * `getDatabase()` returns correct string
    * `getHelp()` returns true for string
    * `isHelpRequest()` returns true or false 
+3. Test `DomainNameModelImpl`
+   * `getRecords()` returns correct hostname & ip
+   * `getRecords()` returns correct for all three
 
 ## (FINAL DESIGN): Class Diagram
 
