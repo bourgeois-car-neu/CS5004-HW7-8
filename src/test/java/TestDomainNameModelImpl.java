@@ -52,4 +52,18 @@ public class TestDomainNameModelImpl {
         });
     }
 
+    /**
+     * test getRecord() returns correct record for existing hostname.
+     * uses hostname in file --> no network call.
+     * check the returned record has correct data.
+     * confirm that "check file first" logic works.
+     */
+    @Test
+    public void testGetRecord() {
+        DomainNameModel model = DomainNameModel.getInstance("data/hostrecords.xml");
+        DNRecord record = model.getRecord("www.github.com");
+        assertNotNull(record);
+        assertEquals("www.github.com", record.hostname());
+        assertEquals("140.82.112.3", record.ip());
+    }
 }
