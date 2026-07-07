@@ -53,17 +53,22 @@ public class DomainNameModelImpl implements DomainNameModel {
 
     /**
      * gets single record by hostname.
+     * checks if record already exists.
      * @param hostname the hostname to look up.
      * @return the record.
      */
     @Override
     public DNRecord getRecord(String hostname) {
-       for (DNRecord record : records) {
-           if (record.hostname().equals(hostname)) {
+       // loop through each element in records list.
+       // each element temp stored as 'record' (single DNRecord).
+        for (DNRecord record : records) {
+           // for current record in loop, get hostname string compare to hostname param
+            if (record.hostname().equals(hostname)) {
                return record;
            }
        }
-       try {
+       // if no hostname match.
+        try {
            // take hostname turn into ip address.
            String ip = NetUtils.lookUpIp(hostname);
            // take ip turn into raw XML.
