@@ -35,7 +35,7 @@ public class DomainNameModelImpl implements DomainNameModel {
             // read XML from stream & deserialize it into a List<DNRecord>.
             // TypeReference<List<DNRecord>>(){} : tell Jackson you want back a List of DNRecords.
             // needed because Java's generics erased at runtime.
-            records = mapper.readValue(fis, new TypeReference<List<DNRecord>>() {});
+            records = mapper.readValue(fis, new TypeReference<List<DNRecord>>() { });
         } catch (Exception error) {
             records = new ArrayList<>();  // instead of crashing, start with empty list.
         }

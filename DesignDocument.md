@@ -146,6 +146,8 @@ You should feel free to number your brainstorm.
    * `getRecords()` returns correct hostname & ip
    * `getRecords()` returns correct for all three
    * `getInstance()` in DomainNameModel returns DomainNameModelImpl object
+   * verify the returned list can't be modified
+   * `getRecord()` returns correct record for existing hostname
 
 ## (FINAL DESIGN): Class Diagram
 

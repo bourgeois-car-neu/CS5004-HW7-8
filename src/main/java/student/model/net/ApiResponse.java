@@ -8,15 +8,34 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiResponse {
-    /** string list of values. */
-    private String ip, city, region, country, postal;
-    /** double list of values. */
-    private double latitude, longitude;
+    /** string ip. */
+    private String ip;
+    /** string city. */
+    private String city;
+    /** string region. */
+    private String region;
+    /** string country. */
+    private String country;
+    /** string postal. */
+    private String postal;
+    /** double latitude. */
+    private double latitude;
+    /** double longitude. */
+    private double longitude;
 
     /** empty/default constructor. */
-    public ApiResponse() {}
+    public ApiResponse() { }
 
-    /** constructor with all values. */
+    /**
+     * constructor for all values.
+     * @param ip ip string address.
+     * @param city city string.
+     * @param region region string.
+     * @param country country string.
+     * @param postal postal string.
+     * @param latitude latitude double.
+     * @param longitude longitude double.
+     */
     public ApiResponse(String ip, String city, String region, String country,
                         String postal, double latitude, double longitude) {
         this.ip = ip;
