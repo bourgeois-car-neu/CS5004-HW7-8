@@ -185,3 +185,7 @@ classDiagram
 > The value of reflective writing has been highly researched and documented within computer science, from learning new information to showing higher salaries in the workplace. For this next part, we encourage you to take time, and truly focus on your retrospective.
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
+
+The major changes I made where adding the following classes: `DomainNameModelImpl` to implement the interface and `ApiResponse` a mutable bean to hold data coming from ipapi.co.
+
+The challenge I faced was understanding that `DNRecord` was a nested record, not its own class/file, and that it was accessed through `DomainNameModel.DNRecord`. Another challenge I came across was testing `DataFromatter`. Because I only knew the structure for 'Pretty Print', I had to create write experiment methods so that I could see what the structure looked like for CSV, JSON, and XML. 
