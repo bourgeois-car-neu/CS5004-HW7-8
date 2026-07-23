@@ -189,3 +189,5 @@ Take time to reflect on how your design has changed. Write in *prose* (i.e. do n
 The major changes I made where adding the following classes: `DomainNameModelImpl` to implement the interface and `ApiResponse` a mutable bean to hold data coming from ipapi.co.
 
 The challenge I faced was understanding that `DNRecord` was a nested record, not its own class/file, and that it was accessed through `DomainNameModel.DNRecord`. Another challenge I came across was testing `DataFromatter`. Because I only knew the structure for 'Pretty Print', I had to create write experiment methods so that I could see what the structure looked like for CSV, JSON, and XML. 
+
+test
